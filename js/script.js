@@ -6,8 +6,11 @@ const genreInput = document.getElementById("list-genre");
 const descriptionInput = document.getElementById("description");
 const searchInput = document.getElementById("search");
 const resetBtn = document.getElementById("resetButton");
-const formulaire = document.getElementById("formulaire")
+const formulaire = document.getElementById("formulaire");
+const count = document.getElementById("compteur");
+const addGenre = document.getElementById("category");
 // const isAdded = null;
+
 
 function afficher(data = series) {
   containerCarte.textContent = "";
@@ -19,13 +22,17 @@ function afficher(data = series) {
       "border-[#393939]",
       "rounded-lg",
       "mt-5",
+      "w-full",
     );
     containerCarte.appendChild(carte);
 
+
+
+    
     const image = document.createElement("img");
-    image.src = serie.image.medium || "";
+    image.src = serie.image.medium || serie.image || "";
     image.alt = "thumbnail";
-    image.classList.add("rounded-t-lg", "w-full", "object-cover");
+    image.classList.add("rounded-t-lg", "w-full", "h-48", "object-cover");
     carte.appendChild(image);
 
     const div = document.createElement("div");
@@ -33,12 +40,12 @@ function afficher(data = series) {
     carte.appendChild(div);
 
     const title = document.createElement("h2");
-    title.classList.add("text-[#FAFAFA]", "pt-2", "pb-1");
+    title.classList.add("text-[#FAFAFA]", "p-2");
     title.textContent = serie.name;
     div.appendChild(title);
 
     const genreDiv = document.createElement("div");
-    genreDiv.classList.add("flex", "gap-3", "pb-1");
+    genreDiv.classList.add("flex", "gap-3", "p-2");
     div.appendChild(genreDiv);
 
     serie.genres.forEach((genre) => {
@@ -66,6 +73,7 @@ function afficher(data = series) {
       "line-clamp-1",
       "md:line-clamp-2",
       "lg:line-clamp-3",
+      "p-2"
     );
     description.innerHTML = serie.summary + " ...";
     div.appendChild(description);
@@ -78,25 +86,39 @@ async function getData() {
   try {
     const response = await fetch("https://api.tvmaze.com/shows?page=0");
     const data = await response.json();
-    series.push(...data);
-    console.log(data);
-    afficher(data);
+    series.push(...data.slice(0 , 20));
+    console.log(series);
+    afficher(series);
   } catch (erreur) {
     alert("erreur");
   }
+  count.textContent = series.length + " séries affichées";
 }
 getData();
 
-// ajouterBtn.addEventListener("click" , (e)=>{
-//     e.preventDefault();
-//     const listeNouveau = {
-//         name : nomInput.value,
-//         genres : genreInput.value,
-//         summary :descriptionInput.value,
-//     }
-//     series.unshift(listeNouveau);
-//     afficher();
-// })
+ajouterBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const nom = nomInput.value;
+  const genre = addGenre.value;
+  const sum = descriptionInput.value;
+  if (
+    nomInput.value == "" ||
+    addGenre.value == "" ||
+    descriptionInput.value == ""
+  ) {
+    alert("Please fill the fields correctly");
+    return;
+  }
+  const newSerie = {
+    name: nom,
+    genres: [genre],
+    summary: sum,
+    image: "assets/placeholderImage.png",
+  };
+  series.unshift(newSerie);
+  afficher(series);
+});
 searchInput.addEventListener("input", () => {
   rechercheFiltrer();
 });
@@ -110,17 +132,18 @@ function rechercheFiltrer() {
   const filtreGenre = genreInput.value;
   const result = series.filter((S) => {
     return (
-      S.name.toLowerCase().includes(recherche) &&
-      S.genres.includes(filtreGenre)
+      S.name.toLowerCase().includes(recherche) && S.genres.includes(filtreGenre)
     );
   });
+  count.textContent = result.length + " séries affichées";
   afficher(result);
 }
-resetBtn.addEventListener("click" , (e) =>{
+resetBtn.addEventListener("click", (e) => {
   e.preventDefault();
   formulaire.reset();
-  afficher(series)
-})
+  count.textContent = series.length + " séries affichées";
+  afficher(series);
+});
 
 // function filtrageGenre() {
 //   const filtreGenre = genreInput.value;
