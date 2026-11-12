@@ -1,0 +1,117 @@
+/* :root {
+    --page: #101010;
+    --carte: #191919;
+    --radius: 9px;
+    --btnradius: 1px;
+    --main: #FAFAFA;
+    --secondary: #BABABA;
+    --font: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    background-color: var(--page);
+}
+
+header {
+    padding: 20px;
+}
+
+.headers {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+main {
+    padding: 20px;
+}
+
+h1 {
+    color: var(--main);
+    font-family: var(--font);
+}
+
+h2 {
+    color: var(--main);
+    font-family: var(--font);
+    font-size: 25px;
+}
+
+p {
+    background-color: var(--carte);
+    color: var(--secondary);
+    font-size: 12px;
+}
+
+.carteAjouter,
+.carteSearch {
+    background-color: var(--carte);
+    border: solid #393939 1px;
+    border-radius: var(--radius);
+    padding: 15px;
+    margin-top: 10px;
+}
+
+h3 {
+    color: var(--main);
+    font-family: var(--font);
+    background-color: var(--carte);
+}
+
+label {
+    background-color: var(--carte);
+    color: var(--main);
+    font-size: 12px;
+}
+
+input {
+    background-color: var(--carte);
+    border: solid #393939 1px;
+    border-radius: var(--radius);
+    width: 100%;
+}
+
+select {
+    background-color: var(--carte);
+    border: solid #393939 1px;
+    border-radius: var(--radius);
+    color: var(--secondary);
+    font-size: 8px;
+    width: 50%;
+}
+
+::placeholder {
+    color: var(--secondary);
+    font-size: 9px;
+    padding: 10px;
+
+}
+
+.descInput {
+    height: 50px;
+}
+
+.ajtBtn {
+    background-color: var(--main);
+    color: var(--page);
+    font-family: var(--font);
+    border-radius: 8px;
+    width: 100%;
+    margin-top: 20px;
+    height: 35px;
+}
+
+.resetBtn {
+    background-color: var(--carte);
+    color: var(--page);
+    font-family: var(--font);
+    border-radius: 8px;
+    width: 50%;
+}
+
+.selectButton {
+    display: flex;
+    background-color: var(--carte);
+
+} */
