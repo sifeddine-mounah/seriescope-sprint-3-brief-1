@@ -9,6 +9,7 @@ const resetBtn = document.getElementById("resetButton");
 const formulaire = document.getElementById("formulaire");
 const count = document.getElementById("compteur");
 const addGenre = document.getElementById("category");
+const ajoutForm = document.getElementById("formulaire-ajout");
 // const isAdded = null;
 
 
@@ -112,12 +113,14 @@ ajouterBtn.addEventListener("click", (e) => {
   }
   const newSerie = {
     name: nom,
-    genres: [genre],
+    genres: genre.split(","),
     summary: sum,
     image: "assets/placeholderImage.png",
   };
   series.unshift(newSerie);
   afficher(series);
+  ajoutForm.reset();
+  descriptionInput.value = "";
 });
 searchInput.addEventListener("input", () => {
   rechercheFiltrer();

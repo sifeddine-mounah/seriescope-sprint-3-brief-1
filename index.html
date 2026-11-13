@@ -31,7 +31,7 @@
             Les champs marqués d’un * sont obligatoires.
           </p>
         </div>
-        <div class="lg:flex flex-col md:flex-row gap-5">
+        <form id="formulaire-ajout" class="lg:flex flex-col md:flex-row gap-5">
           <div class="flex flex-col lg:w-[50%]">
             <label for="nom" class="text-[#FAFAFA] text-[12px]">
               Nom de la série *
@@ -54,17 +54,16 @@
               class="border border-[#393939] rounded-lg w-full placeholder: text-[#BABABA] placeholder:p-2.5 placeholder:text-[9px]"
             />
           </div>
-        </div>
-
-        <label for="description" class="text-[#FAFAFA] text-[12px]"
-          >Description</label
-        ><br />
-        <textarea
-          id="description"
-          placeholder="Résume la série en quelques mots…"
-          class="text-[#BABABA] w-full h-12.5 p-2.5 rounded-lg border border-gray-300 placeholder:text-gray-400 placeholder:text-[9px]"
-        ></textarea>
-
+</form>
+          <label for="description" class="text-[#FAFAFA] text-[12px]"
+            >Description</label
+          ><br />
+          <textarea
+            id="description"
+            placeholder="Résume la série en quelques mots…"
+            class="text-[#BABABA] w-full h-12.5 p-2.5 rounded-lg border border-gray-300 placeholder:text-gray-400 placeholder:text-[9px]"
+          ></textarea>
+        
         <button
           id="ajoute-btn"
           class="bg-[#FAFAFA] w-full rounded-lg mt-5 h-8.75 lg:w-37.5"
@@ -82,7 +81,10 @@
         </div>
 
         <div class="lg:grid grid-rows-3">
-          <form id="formulaire" class="flex flex-col gap-1 lg:flex flex-col-none">
+          <form
+            id="formulaire"
+            class="flex flex-col gap-1 lg:flex flex-col-none"
+          >
             <label for="search" class="text-[#FAFAFA] text-[12px]">
               Recherche
             </label>
@@ -130,7 +132,9 @@
         </div>
       </section>
 
-      <p id="compteur" class="text-[#BABABA] text-[11px] mt-5">6 séries affichées</p>
+      <p id="compteur" class="text-[#BABABA] text-[11px] mt-5">
+        6 séries affichées
+      </p>
 
       <div
         id="carteContainer"
